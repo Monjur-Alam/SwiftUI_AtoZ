@@ -9,13 +9,53 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationView {
+            List {
+                Section("Beginner") {
+                    NavigationLink(destination: TagView()) {
+                        Label("Tag View", systemImage: "tag.fill")
+                            .foregroundColor(Color.blue)
+                    }
+                    NavigationLink(destination: ListView()) {
+                        Label("List View", systemImage: "list.bullet")
+                            .foregroundColor(Color.blue)
+                    }
+                    NavigationLink(destination: DatePickerView()) {
+                        Label("Date Picker View", systemImage: "calendar")
+                            .foregroundColor(Color.blue)
+                    }
+                    NavigationLink(destination: SimpleTabView()) {
+                        Label("Tab View", systemImage: "tablecells.fill")
+                            .foregroundColor(Color.blue)
+                    }
+                    NavigationLink(destination: ImagePickerView()) {
+                        Label("Image Picker", systemImage: "photo")
+                            .foregroundColor(Color.blue)
+                    }
+                    NavigationLink(destination: ProgressView(value: 2)) {
+                        Label("Progress", systemImage: "photo")
+                            .foregroundColor(Color.blue)
+                    }
+                    NavigationLink(destination: SegmentView()) {
+                        Label("Segment", systemImage: "photo")
+                            .foregroundColor(Color.blue)
+                    }
+                }
+//                Section("Loop") {
+//                    NavigationLink(destination: TagView()) {
+//                        Label("ForEach", systemImage: "tag.fill")
+//                            .foregroundColor(Color.blue)
+//                            .bold()
+//                    }
+//                    NavigationLink(destination: ListView()) {
+//                        Label("For", systemImage: "list.bullet")
+//                            .foregroundColor(Color.blue)
+//                            .bold()
+//                    }
+//                }
+            }
+            .navigationTitle("Dashboard")
         }
-        .padding()
     }
 }
 
