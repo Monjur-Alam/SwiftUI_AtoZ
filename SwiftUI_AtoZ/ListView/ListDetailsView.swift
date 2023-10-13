@@ -13,6 +13,24 @@ struct ListDetailsView: View {
     var index: Int
     var body: some View {
         VStack {
+            CustomTextField(viewModel: self.viewModel, title: $title, index: index)
+        }
+        .navigationBarTitle("List Details", displayMode: .inline)
+    }
+}
+
+struct ListDetailsView_Previews: PreviewProvider {
+    static var previews: some View {
+        ListDetailsView(viewModel: ListVM(), title: "Dummy text", index: 0)
+    }
+}
+
+struct CustomTextField: View {
+    @ObservedObject var viewModel: ListVM
+    @Binding var title: String
+    var index: Int
+    var body: some View {
+        ZStack {
             TextField("", text: $title)
             .padding()
             .overlay(
@@ -25,12 +43,5 @@ struct ListDetailsView: View {
             })
             .padding()
         }
-        .navigationBarTitle("List Details", displayMode: .inline)
-    }
-}
-
-struct ListDetailsView_Previews: PreviewProvider {
-    static var previews: some View {
-        ListDetailsView(viewModel: ListVM(), title: "Dummy text", index: 0)
     }
 }
